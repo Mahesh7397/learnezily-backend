@@ -12,12 +12,12 @@ const AccountLogin=async(req,res)=>{
       const token=jwt.sign({id:isready.user._id,role:isready.user.role},process.env.JWT_SECRET_CODE, { expiresIn: "7d" })
       res.cookie("token", token, {
          httpOnly: true,
-         secure: false, // true in production (HTTPS)
+         secure: true, // true in production (HTTPS)
          sameSite: "none",
         //  domain: ".learnezily.app",
          maxAge: 7 * 24 * 60 * 60 * 1000
       })
-      res.status(200).json({ data:isready?.user})
+      res.status(200).json({code:20, data:isready?.user})
     }
     res.status(400).json({message:"server error"})
   } catch (error) {
@@ -30,7 +30,7 @@ const AccountRegister=async(req,res)=>{
     const data = req.body;
     const isready=await Accountservice.EmailAccount(data)
     if (!isready) res.status(400).json({ message: "User exists" });
-     res.json({ code:"20",message: "OTP sent to email" });
+    res.status(200).json({ code:20,message: "OTP sent to email" });
   } catch (error) {
     
   }

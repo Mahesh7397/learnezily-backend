@@ -79,7 +79,7 @@ const VerifyAccount=async(data)=>{
   user.otp = undefined;
   user.otpExpiry = undefined;
   await user.save();
-  return { message: "Email verified successfully" }
+  return { code:20, message: "Email verified successfully" }
     } catch (error) {
         console.log(error)
     }
