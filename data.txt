@@ -1,0 +1,48 @@
+Task:{
+   Daily:[
+    {
+        id:"",
+        name:"",
+        time:{start:"",end:""},
+        iscomplete:true
+    } ,
+    ......
+   ],
+   Oneday:{
+    date:[
+        {
+        id:"",
+        name:"",
+        time:{start:"",end:""},
+        iscomplete:true
+        },
+        ..... 
+    ]
+    date1:[
+        {
+        id:"",
+        name:"",
+        time:{start:"",end:""},
+        iscomplete:true
+        },
+        ..... 
+    ]
+   }
+}
+
+if semwise 
+    subject:{sem1:[],sem2:[],....}
+else subject:[sub,sub,sub,...]
+
+grads:{
+    sem1:{
+        sub1:mark,....
+    },
+    sem2:{
+        sub1:mark,....
+    },....
+}
+
+task:{}
+subject:{}
+grads:{}

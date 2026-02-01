@@ -18,7 +18,14 @@ const GoogleAccount=async(data)=>{
                 provider:"google",
                 emailVerified:true,
                 userdata:{
-                    OnBoardingfinish:false
+                    OnBoardingfinish:false,
+                      task:{
+                        daily:[],
+                        oneday:{null:null}
+                    },
+                    subject:{},
+                    grade:{},
+                    cradit:0
                 },
                 role:process.env.CODE_USER
             })
@@ -44,7 +51,14 @@ const EmailAccount=async(data)=>{
                 otp:otp,
                 otpExpiry:Date.now() + 10 * 60 * 1000,
                 userdata:{
-                    OnBoardingfinish:false
+                    OnBoardingfinish:false,
+                    task:{
+                        daily:[],
+                        oneday:{}
+                    },
+                    subject:{},
+                    grade:{},
+                    cradit:0
                 },
                 role:process.env.CODE_USER
             })
