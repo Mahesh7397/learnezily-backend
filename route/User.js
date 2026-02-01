@@ -4,8 +4,23 @@ const UserControl=require("../controler/User")
 
 //get user data
 Router.route("/")
+.get(UserControl.GetUserdata)
+.post(UserControl.UserUpdate)
 //update user data
-Router.route("/detail")
-Router.route("/taskcreate").post(UserControl.TaskCreate)
+Router.route("/grade")
+.post()
+.put()
+.delete()
+
+Router.route("/task")
+.post(UserControl.TaskCreate)
+.put(UserControl.TaskUpdate)
+.delete(UserControl.TaskDelete)
+
+Router.route("/subject")
+.post(UserControl.SubjectAdd)
+.put(UserControl.SubjectUpdate)
+.delete(UserControl.SubjectDelete)
+
 
 module.exports=Router

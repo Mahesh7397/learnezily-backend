@@ -1,19 +1,12 @@
 const { param } = require('../route/Account')
 const UserService=require('../service/User')
 
-const DetailUpdate=async(req,res)=>{
-    try {
-        
-    } catch (error) {
-        
-    }
-}
 
 const TaskCreate=async(req,res)=>{
     try {
         const data=req.body
         const param={type:data.type,date:data?.date,task:data.task}
-        const isready=await UserService.TaskCreate(param,data.email)
+        const isready=await UserService.TaskCreate(param,data.email,req.user.id)
         res.json({message:"task added successfuly"})
     } catch (error) {
         
@@ -23,12 +16,96 @@ const TaskCreate=async(req,res)=>{
 const TaskUpdate=async(req,res)=>{
     try {
         const data=req.body
-        const param={type:data.type,data:data?.date,task:data.task}
-        const isready=await UserService.TaskUpdate(param,data.email)
+        const param={type:data.type,date:data?.date,task:data.task}
+        const isready=await UserService.TaskUpdate(param,data.email,req.user.id)
         res.json({message:"task added successfuly"})
     } catch (error) {
         
     }
 }
 
-module.exports={TaskCreate,TaskUpdate}
+const TaskDelete=async(req,res)=>{
+    try {
+        const data=req.body
+        const param={type:data.type,date:data?.date,task:data.task}
+        const isready=await UserService.TaskDelete(param,data.email,req.user.id)
+        res.json({message:"task added successfuly"})
+    } catch (error) {
+        
+    }
+}
+
+const SubjectAdd=async(req,res)=>{
+    try {
+        const data=req.body
+        const isready=await UserService.addSubject(data.email,data.sem,data.subject,req.user.id)
+        res.json({message:"subject add successfuly"})
+    } catch (error) {
+        
+    }
+}
+
+const SubjectDelete=async(req,res)=>{
+    try {
+         const data=req.body
+        const isready=await UserService.deleteSubject(data.email,data.sem,data.id,req.user.id)
+        res.json({message:"subject add successfuly"})
+    } catch (error) {
+        
+    }
+}
+
+const SubjectUpdate=async(req,res)=>{
+    try {
+         const data=req.body
+        const isready=await UserService.updateSubject(data.email,data.sem,data.subject,req.user.id)
+        res.json({message:"subject add successfuly"})
+    } catch (error) {
+        
+    }
+}
+
+const UserUpdate=async(req,res)=>{
+    try {
+        const data=req.body
+        const isready =await UserService.updateUser(data.email,data.key,data.value,req.user.id)
+        res.json({message:"user update successfuly"})
+    } catch (error) {
+        
+    }
+}
+
+const GetUserdata=async(req,res)=>{
+    try {
+        const data=req.body
+        const isready=await UserService.GetUserdata(req.user.id,body.email)
+    } catch (error) {
+        
+    }
+}
+
+const AddGrade=async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+const UpdateGrade=async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+const DeleteGrade=async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+module.exports={TaskCreate,TaskUpdate,TaskDelete,SubjectAdd,SubjectDelete,SubjectUpdate,UserUpdate,GetUserdata}
