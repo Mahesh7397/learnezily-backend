@@ -23,8 +23,8 @@ const GoogleAccount=async(data)=>{
                         daily:[],
                         oneday:{null:null}
                     },
-                    subject:{},
-                    grade:{},
+                    subject:[],
+                    grade:[],
                     cradit:0
                 },
                 role:process.env.CODE_USER

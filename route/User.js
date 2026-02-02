@@ -8,9 +8,9 @@ Router.route("/")
 .post(UserControl.UserUpdate)
 //update user data
 Router.route("/grade")
-.post()
-.put()
-.delete()
+.post(UserControl.AddGrade)
+.put(UserControl.UpdateGrade)
+.delete(UserControl.DeleteGrade)
 
 Router.route("/task")
 .post(UserControl.TaskCreate)

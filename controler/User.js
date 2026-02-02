@@ -1,4 +1,3 @@
-const { param } = require('../route/Account')
 const UserService=require('../service/User')
 
 
@@ -78,7 +77,8 @@ const UserUpdate=async(req,res)=>{
 const GetUserdata=async(req,res)=>{
     try {
         const data=req.body
-        const isready=await UserService.GetUserdata(req.user.id,body.email)
+        const isready=await UserService.GetUserdata(req.user.id,data.email)
+        res.json(isready) 
     } catch (error) {
         
     }
@@ -86,7 +86,9 @@ const GetUserdata=async(req,res)=>{
 
 const AddGrade=async(req,res)=>{
     try {
-        
+         const data=req.body
+        const isready=await UserService.addGrade(data.email,data.sem,data.grade,req.user.id)
+        res.json({message:"grade added successfuly"})
     } catch (error) {
         
     }
@@ -94,7 +96,9 @@ const AddGrade=async(req,res)=>{
 
 const UpdateGrade=async(req,res)=>{
     try {
-        
+        const data=req.body
+        const isready=await UserService.updateGrade(data.email,data.sem,data.grade,req.user.id)
+        res.json({message:"grade added successfuly"})
     } catch (error) {
         
     }
@@ -102,10 +106,12 @@ const UpdateGrade=async(req,res)=>{
 
 const DeleteGrade=async(req,res)=>{
     try {
-        
+        const data=req.body
+        const isready=await UserService.deleteGrade(data.email,data.sem,data.grade,req.user.id)
+        res.json({message:"grade added successfuly"})
     } catch (error) {
         
     }
 }
 
-module.exports={TaskCreate,TaskUpdate,TaskDelete,SubjectAdd,SubjectDelete,SubjectUpdate,UserUpdate,GetUserdata}
+module.exports={TaskCreate,TaskUpdate,TaskDelete,SubjectAdd,SubjectDelete,SubjectUpdate,UserUpdate,GetUserdata,AddGrade,UpdateGrade,DeleteGrade}
