@@ -251,4 +251,17 @@ Use this exact Schema:
   }
 }
 
-module.exports = { Ai_Gemini_model, Ai_Gemini_model_evaluation, Ai_Gemini_model_Roadmap, Ai_Gemini_model_Deep_Diver }
+const Ai_Gemini_model_Chat = async (req, res) => {
+  try {
+    const { message} = req.body
+    if(!message.length) return res.json({code:40,message: "message is required"})
+    const result = await geminiModel.generateContent(message)
+    const raw = result.response.text();
+    res.json({messgae:raw});
+  } catch (error) {
+    console.log(error)
+    res.json({ code:40,message: "fail to generate a content" })
+  }
+}
+
+module.exports = { Ai_Gemini_model, Ai_Gemini_model_evaluation, Ai_Gemini_model_Roadmap, Ai_Gemini_model_Deep_Diver,Ai_Gemini_model_Chat }

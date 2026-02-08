@@ -15,5 +15,8 @@ Router.route("/roadmap")
 Router.route("/deep-dive")
 .post(AiController.Ai_Gemini_model_Deep_Diver)
 
+Router.route("/chat")
+.post(AiController.Ai_Gemini_model_Chat)
+
 
 module.exports=Router
